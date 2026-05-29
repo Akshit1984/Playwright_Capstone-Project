@@ -1,0 +1,12 @@
+node_modules/
+playwright-report/
+test-results/
+allure-report/
+allure-results/
+blob-report/
+screenshots/*
+!screenshots/.gitkeep
+.env
+auth.json
+playwright/.auth/
+playwright/.cache/
