@@ -1,26 +1,29 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 
+const useAllure = process.env.ALLURE === 'true';
+
 export default defineConfig({
   testDir: './tests',
-  fullyParallel: false,
+  fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  workers: 1,
-  timeout: 90000,
+  workers: process.env.CI ? 6 : 6,
+  timeout: 45000,
   expect: {
-    timeout: 30000,
+    timeout: 10000,
   },
   reporter: [
+    ['list'],
     ['html', { open: 'never' }],
-    ['allure-playwright', { resultsDir: 'allure-results' }],
+    ...(useAllure ? [['allure-playwright', { resultsDir: 'allure-results' }]] : []),
   ],
   use: {
     baseURL: 'https://demowebshop.tricentis.com',
-    actionTimeout: 20000,
-    navigationTimeout: 60000,
+    actionTimeout: 10000,
+    navigationTimeout: 30000,
     screenshot: 'only-on-failure',
-    trace: 'retain-on-failure',
+    trace: 'off',
     video: 'off',
   },
   projects: [

@@ -10,18 +10,24 @@ The suite validates customer-facing e-commerce areas with Page Object Model clas
 
 ## Coverage
 
+The project now follows the updated module instruction: **6 core modules** plus **2 add-on modules**.
+
 | Service | Test Cases |
 |---|---:|
 | Authentication | 15 |
 | Product and Search | 15 |
 | Cart | 15 |
-| Wishlist and Compare | 15 |
 | User Profile and Account | 15 |
 | Address and Shipping | 15 |
 | Checkout and Payment | 15 |
-| Customer Support and Information | 15 |
+| Add on - Wishlist and Compare | 15 |
+| Add on - Customer Support and Information | 15 |
 
 Total automated test cases: **120**
+
+Core module test cases: **90**
+
+Add-on module test cases: **30**
 
 Configured browser projects:
 
@@ -54,6 +60,8 @@ Akshit_Capstone
 |-- data
 |   `-- demoWebShopData.js
 |-- docs
+|   |-- Akshit_Capstone_Final_Project_Report.md
+|   |-- Akshit_Capstone_Final_Project_Report.pdf
 |   |-- Capstone_Day_Wise_Schedule.docx
 |   |-- Demo_Web_Shop_Capstone_Testing_Plan.docx
 |   |-- Demo_Web_Shop_Capstone_Testing_Plan.pdf
@@ -76,10 +84,10 @@ Akshit_Capstone
 |   |-- authentication
 |   |-- cart
 |   |-- checkout-payment
-|   |-- customer-support
+|   |-- add-on-customer-support-and-information
 |   |-- product
 |   |-- user-profile
-|   `-- wishlist-compare
+|   `-- add-on-wishlist-and-compare
 |-- playwright.config.js
 |-- package.json
 |-- package-lock.json
@@ -96,4 +104,6 @@ npm run report
 npm run test:allure
 ```
 
-The suite uses one worker to keep remote demo-site traffic stable and runs across Chromium, Firefox, and WebKit.
+The default run executes Chromium, Firefox, and WebKit in parallel. On a typical training laptop it should finish in a few minutes.
+
+Use `npm run test:allure` when you need fresh Allure results locally. It cleans old reports, runs the tests with the Allure reporter enabled, and generates `allure-report`.
